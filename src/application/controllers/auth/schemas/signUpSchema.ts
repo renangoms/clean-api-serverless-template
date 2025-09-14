@@ -1,0 +1,13 @@
+import { z } from 'zod';
+
+export const signUpSchema = z.object({
+  account: z.object({
+    email: z.email('Invalid email'),
+    password: z.string().min(8, '"password" should be at least 8 characters long.'),
+  }),
+  profile: z.object({
+    name: z.string(),
+  }),
+});
+
+export type SignUpBody = z.infer<typeof signUpSchema>;

@@ -1,0 +1,22 @@
+org: renangomes
+app: marca-jogo
+service: api
+
+provider:
+  name: aws
+  region: sa-east-1
+  runtime: nodejs22.x
+  architecture: arm64
+  memorySize: 128
+  stage: ${opt:stage, 'dev'}
+  environment: ${file(./sls/config/env.yml)}
+
+package:
+  individually: true
+
+build:
+  esbuild:
+    configFile: ./esbuild.config.mjs
+
+functions:
+  - ${file(./sls/functions/auth.yml)}
