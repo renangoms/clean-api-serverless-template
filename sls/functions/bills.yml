@@ -1,0 +1,36 @@
+createBill:
+  handler: src/main/functions/bills/createBill.handler
+  events:
+    - httpApi:
+        method: POST
+        path: /bills
+listBills:
+  handler: src/main/functions/bills/listBills.handler
+  events:
+    - httpApi:
+        method: GET
+        path: /bills
+getBill:
+  handler: src/main/functions/bills/getBill.handler
+  events:
+    - httpApi:
+        method: GET
+        path: /bills/{billId}
+settleBill:
+  handler: src/main/functions/bills/settleBill.handler
+  events:
+    - httpApi:
+        method: POST
+        path: /bills/{billId}/settlements
+reverseSettlement:
+  handler: src/main/functions/bills/reverseSettlement.handler
+  events:
+    - httpApi:
+        method: POST
+        path: /bills/{billId}/settlements/{settlementId}/reverse
+cancelBill:
+  handler: src/main/functions/bills/cancelBill.handler
+  events:
+    - httpApi:
+        method: POST
+        path: /bills/{billId}/cancel
